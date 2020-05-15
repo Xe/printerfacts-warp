@@ -3,14 +3,14 @@ let kms =
 
 let tag = env:GITHUB_SHA as Text ? "latest"
 
-let image = "xena/printerfacts:${tag}"
+let image = "xena/printerfacts-warp:${tag}"
 
 in  kms.app.make
       kms.app.Config::{
-      , name = "printerfacts"
+      , name = "printerfacts-warp"
       , appPort = 5000
       , image
       , replicas = 2
-      , domain = "printerfacts.demo.cetacean.club"
+      , domain = "printerfacts-warp.cetacean.club"
       , leIssuer = "prod"
       }

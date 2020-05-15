@@ -1,4 +1,4 @@
-{ sources ? import ./nix/sources.nix, pkgs ? import sources.nixpkgs { } }:
+{ sources ? import ./nix/sources.nix, pkgs ? import <nixpkgs> { } }:
 let
   srcNoTarget = dir:
     builtins.filterSource

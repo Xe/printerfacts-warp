@@ -2,10 +2,10 @@
 
 let
   sources = import ./nix/sources.nix;
-  pkgs = import sources.nixpkgs { };
+  pkgs = import <nixpkgs> { };
   printerfacts = import ./printerfacts.nix { inherit pkgs sources; };
 
-  name = "xena/printerfacts";
+  name = "xena/printerfacts-warp";
   tag = "latest";
 
 in pkgs.dockerTools.buildLayeredImage {
@@ -13,7 +13,7 @@ in pkgs.dockerTools.buildLayeredImage {
   contents = [ printerfacts ];
 
   config = {
-    Cmd = [ "/bin/printerfacts" ];
+    Cmd = [ "${printerfacts}/bin/printerfacts" ];
     WorkingDir = "/";
   };
 }

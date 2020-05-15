@@ -1,6 +1,5 @@
 let
-  sources = import ./nix/sources.nix { };
-  pkgs = import sources.nixpkgs { };
+  pkgs = import <nixpkgs> { };
   dhall = import <dhall> { };
 in pkgs.mkShell {
   buildInputs = with pkgs; [
